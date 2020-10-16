@@ -269,7 +269,15 @@ class Property():
 		self.propType = data.get('prop_type')
 		self.kubunType = data.get('type')
 		self.value = data.get('value')
-		self.hidden = bool(data.get('hidden', False))
+
+		self.hidden = bool(data.get('hidden', False)) # Hide Property, useful for Join-Attributes
+		
+		# Weight for similarity calculation
+		# 0 tokens => disable for this property
+		# Default: 1 token, open scale
+		# Aggregated Similarity = sum([p.tokens * similarity_to_center_property for p in properties]) / sum_of_tokens_in_schema
+		self.tokens = int(data.get('tokens', 1))
+		assert self.tokens >= 0, "Tokens are unsigned and need to be positive."
 
 		if self.kubunType is not None:
 			assert self.kubunType == 'KubunBox', "Only KubunBox has the 'type'-Attribute."
@@ -325,6 +333,7 @@ class Property():
 			"value": value,
 			"config": self.config,
 			"hidden": self.hidden,
+			"tokens": self.tokens,
 			"type": None,
 			"prop_type": None
 		}
