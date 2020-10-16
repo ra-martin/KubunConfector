@@ -135,7 +135,7 @@ class Confector():
 				
 				targetTypeName = self.linkToTargetTypeName.get(propertyIdentCasted)
 				assert targetTypeName is not None, f"PropertyIdent: { propertyIdent }: Outgoing Link not found in Schema for {tagName}. If it does exist, did you specify a target?"
-				valueCasted = KubunSelector(value, [propertyIdentCasted])
+				valueCasted = KubunSelector(value, targetTypeName)
 			else:
 				if not isinstance(value, expectedType):  # Auto-Cast
 					valueCasted = expectedType(value)
