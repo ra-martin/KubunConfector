@@ -158,7 +158,7 @@ class Confector():
 
 		print("Links in Galaxy: ")
 		for sourceTag in self.schemata.keys():
-			targetTags = linksSimple.get(sourceTag, [])
+			targetTags = linksSimple.get(sourceTag, "No outbound links.")
 			print(f"{sourceTag.ljust(maxLen + 5)} -> {targetTags}")
 
 		print("\nSchemata: \n")
