@@ -1,0 +1,61 @@
+{
+    "main": {
+      "title": "Animal",
+      "ident": null,
+      "type": "KubunBox",
+      "value": [
+        {
+          "title": "Overview",
+          "ident": null,
+          "type": "KubunBox",
+          "value": [
+            {
+              "title": "Has Tail",
+              "ident": "97a93039-b614-4b9d-ac49-b99f0d0b41e9",
+              "prop_type": "KubunBool",
+              "config": null
+            },
+            {
+                "title": "Number of Legs",
+                "ident": "bc1e7372-3c89-44e1-853b-6c97b24fb8a4",
+                "prop_type": "KubunInt",
+                "config": {
+                    "unit": "legs"
+                }
+            }
+          ],
+          "config": null
+        },
+        {
+          "title": "Categorization",
+          "ident": null,
+          "type": "KubunBox",
+          "value": [
+            {
+              "title": "Class",
+              "ident": "6b7df71e-c21d-4162-8e9f-2eec39010362",
+              "prop_type": "KubunLink",
+              "config": {
+                "target": {
+                  "target_tag": "animalclass",
+                  "target_ident": "d96e6334-0736-4010-bf3a-3c4bd142f41d"
+                },
+                "reverse_ident": "a143e88a-e1e0-437f-a8e3-e69a8670e62a",
+                "navigate": true,
+                "show_cover": false
+              }
+            }
+          ],
+          "config": null
+        }
+      ],
+      "config": null
+    },
+    "mini": {
+      "title": "Animal",
+      "ident": null,
+      "type": "KubunBox",
+      "value": [],
+      "config": null
+    }
+  }
