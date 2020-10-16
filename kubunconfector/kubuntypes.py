@@ -291,8 +291,7 @@ class Property():
 		if (ident := data.get('ident')) is not None:
 			self.ident = KubunIdentifier(ident)
 		else:
-			assert (self.kubunType.isStructural(
-			)), "Only Structural Properties (KubunBox) omit the identifier."
+			assert (self.kubunType.isStructural()), "Only Structural Properties (KubunBox) omit the identifier."
 			self.ident = None
 
 		self.kubunType.getConfigSet().checkConfig(self.config or {}, self.title)
@@ -307,10 +306,16 @@ class Property():
 	def pretty_print(self, depth=0):
 		prefix = "\t" * depth
 		ktypeRepr = f"   [ { self.typeName }"
+		
 		if self.kubunType.isLink() and (targetConfig := self.config.get('target')) is not None:
 			targetTag = targetConfig['target_tag']
 			ktypeRepr += f" -> {targetTag}"
+		
+		if self.hidden:
+			ktypeRepr + ", hidden"
+
 		ktypeRepr += " ]"
+
 		print(f"{prefix}◦ {self.title} {ktypeRepr}")
 		if self.kubunType.isStructural():
 			for v in self.value:
