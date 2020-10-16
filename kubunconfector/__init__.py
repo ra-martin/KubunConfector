@@ -132,7 +132,10 @@ class Confector():
 					value = [value]  # KubunSelectors are lists.
 				if len(value) == 0:
 					return  # Empty selectors will never be resolved anyway.
-				valueCasted = KubunSelector(value, self.linkToTargetTypeName[propertyIdentCasted])
+				
+				targetTypeName = self.linkToTargetTypeName.get(propertyIdentCasted)
+				assert targetTypeName is not None, f"PropertyIdent: { propertyIdent }: Outgoing Link not found in Schema for {tagName}. If it does exist, did you specify a target?"
+				valueCasted = KubunSelector(value, [propertyIdentCasted])
 			else:
 				if not isinstance(value, expectedType):  # Auto-Cast
 					valueCasted = expectedType(value)
