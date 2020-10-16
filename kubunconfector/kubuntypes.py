@@ -264,12 +264,12 @@ class Property():
 	def __init__(self, data: dict):
 
 		self.title = str(data['title'])
-		assert self.title is not None
 
-		# TODO: This is very hacky ( and stupid :( ) and will be changed, we only need "type"
+		# TODO: This is very hacky ( and stupid :( ) and will be changed, in reality we only need "type"
 		self.propType = data.get('prop_type')
 		self.kubunType = data.get('type')
 		self.value = data.get('value')
+		self.hidden = bool(data.get('hidden', False))
 
 		if self.kubunType is not None:
 			assert self.kubunType == 'KubunBox', "Only KubunBox has the 'type'-Attribute."
@@ -324,6 +324,7 @@ class Property():
 			"ident": ident,
 			"value": value,
 			"config": self.config,
+			"hidden": self.hidden,
 			"type": None,
 			"prop_type": None
 		}
