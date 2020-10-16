@@ -157,7 +157,8 @@ class Confector():
 			maxLen = max(max(maxLen, len(linkTarget['target_tag'])), len(sourceTag))
 
 		print("Links in Galaxy: ")
-		for sourceTag, targetTags in linksSimple.items():
+		for sourceTag in self.schemata.keys():
+			targetTags = linksSimple.get(sourceTag, [])
 			print(f"{sourceTag.ljust(maxLen + 5)} -> {targetTags}")
 
 		print("\nSchemata: \n")
@@ -180,7 +181,7 @@ class Confector():
 			self.archiveZip.writestr(f"data/{tagName}.json", datafile.read())
 			datafile.close()
 
-		self.archiveZip.writestr("meta.json", json.dumps(metaData))  # TODO: Attribution as class
+		self.archiveZip.writestr("meta.json", json.dumps(metaData))  # TODO: Attribution as class / typeddict
 
 		print("\nArchive Contents:")
 		self.archiveZip.printdir()
