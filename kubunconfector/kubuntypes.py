@@ -276,8 +276,10 @@ class Property():
 		# 0 tokens => disable for this property
 		# Default: 1 token, open scale
 		# Aggregated Similarity = sum([p.tokens * similarity_to_center_property for p in properties]) / sum_of_tokens_in_schema
-		self.tokens = int(data.get('tokens', 1))
-		assert self.tokens >= 0, "Tokens are unsigned and need to be positive."
+		self.tokens = data.get('tokens')
+		if self.tokens is not None:
+			self.tokens = int(self.tokens)
+			assert self.tokens >= 0, "Tokens are unsigned and need to be positive."
 
 		if self.kubunType is not None:
 			assert self.kubunType == 'KubunBox', "Only KubunBox has the 'type'-Attribute."

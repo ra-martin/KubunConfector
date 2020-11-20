@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
       name='KubunConfector',
-      version='0.1.3-6',
+      version='0.1.3-7',
       description='Kubun Data-Preparation Utility',
       author='Raphael Martin',
       author_email='raphael@kubun.io',
