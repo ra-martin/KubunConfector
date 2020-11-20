@@ -1,5 +1,5 @@
 <h2>
-<p align="center"><img src="./assets/logo.png" width="auto" height="80"></p>
+<p align="center"><img src="./assets/logo.png" width="auto" height="115"></p>
 <p align="center">Kubun Data-Preparation Utility</p>
 </h2>
 
