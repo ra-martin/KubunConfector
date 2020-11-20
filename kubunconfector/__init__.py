@@ -11,14 +11,14 @@ from .misc import KubunIdentifier, KubunJSONEncoder
 
 
 class KubunNode():
-	def __init__(self, title: str, coverImages: List[str] = []):
-		self.title = title
+	def __init__(self, titles: [str], coverImages: List[str] = []):
+		self.titles = titles
 		self.coverImages = coverImages
 		self.props: Dict[KubunIdentifier, KubunType] = {}
 
 	def toDict(self):
 		return {
-			'title': self.title,
+			'titles': self.titles,
 			'coverImages': self.coverImages,
 			** {
 				i.toDict(): v for i, v in self.props.items()
@@ -26,7 +26,7 @@ class KubunNode():
 		}
 
 	def __repr__(self):
-		return f"<KubunNode: { self.title }, Props: { ', '.join(sorted(map(str, self.props.keys()))) }>"
+		return f"<KubunNode: { self.titles[0] }, Props: { ', '.join(sorted(map(str, self.props.keys()))) }>"
 
 
 class Confector():
