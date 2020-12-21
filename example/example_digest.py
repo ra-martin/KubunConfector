@@ -29,7 +29,7 @@ def digestAnimals(confector: Confector) -> Iterable[KubunNode]:
                 '6b7df71e-c21d-4162-8e9f-2eec39010362': int(row['class_type'])
             }
 
-            node = KubunNode(capitalizeIndividualWords(animalName), coverImages)
+            node = KubunNode([ capitalizeIndividualWords(animalName) ], coverImages)
             confector.addMultiplePropertiesToNode("animal", node, nodeData)
 
             yield node
