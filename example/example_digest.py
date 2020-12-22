@@ -45,7 +45,7 @@ def digestAnimalClasses(confector: Confector) -> Iterable[KubunNode]:
                 'd96e6334-0736-4010-bf3a-3c4bd142f41d': classNumber,
             }
 
-            node = KubunNode(className)
+            node = KubunNode([ className ])
             confector.addMultiplePropertiesToNode("animalclass", node, nodeData)
 
             yield node
