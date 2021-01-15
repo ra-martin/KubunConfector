@@ -1,4 +1,4 @@
-from zipfile import ZipFile, ZIP_BZIP2
+from zipfile import ZipFile, ZIP_BZIP2, Path as ZipPath
 import json
 
 class ZipTray():
@@ -13,6 +13,16 @@ class ZipTray():
         with self.archive.open(str(filePath)) as fob:
             return json.load(fob)
     
+    def glob(self, pattern):
+        from pathlib import PurePath
+        for filePath in self.archive.filelist:
+            if not filePath.is_dir() and PurePath(filePath.filename).match(pattern):
+                yield filePath.filename
+    
+    def globAndLoad(self, pattern):
+        for filePath in self.glob(pattern):
+            yield filePath, self.readFile(filePath)
+
     def fileExists(self, filePath):
         try:
             with self.archive.open(str(filePath)) as _fob:
